@@ -13,9 +13,14 @@ on:
         required: false
         default: 'latest'
 
+# Grant permissions to GITHUB_TOKEN at the workflow level
+permissions:
+  contents: read
+  packages: write
+
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: dj-codeman/ollama-tailnet
+  IMAGE_NAME: ${{ github.repository_owner }}/ollama-tailnet
 
 jobs:
   build-and-push:
