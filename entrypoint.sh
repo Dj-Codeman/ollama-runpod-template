@@ -9,6 +9,17 @@ if [ -z "${TS_AUTHKEY:-}" ]; then
   exit 1
 fi
 
+if [ -z "${TS_HOSTNAME:-}" ]; then
+  if [ -n "${SESSION_ID:-}" ]; then
+    HEX_ID=$(printf '%s' "${SESSION_ID}" | cut -c 1-13 | od -An -tx1 | tr -d ' \r\n' | sed 's/0a$//')
+    TS_HOSTNAME="ais-${HEX_ID}"
+  else
+    TS_HOSTNAME="runpod-ollama"
+  fi
+fi
+
+echo "[start] hostname set to ${TS_HOSTNAME}"
+
 echo "[start] starting tailscaled"
 tailscaled \
   --tun=userspace-networking \
