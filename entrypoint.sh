@@ -33,7 +33,8 @@ echo "[start] bringing tailscale up"
 tailscale --socket=/tmp/tailscaled.sock up \
   --auth-key="${TS_AUTHKEY}" \
   --hostname="${TS_HOSTNAME}" \
-  --accept-dns=false
+  --accept-dns=false \
+  --ephemeral
 
 echo "[start] starting ollama"
 ollama serve &
