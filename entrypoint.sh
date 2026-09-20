@@ -34,7 +34,6 @@ tailscale --socket=/tmp/tailscaled.sock up \
   --auth-key="${TS_AUTHKEY}" \
   --hostname="${TS_HOSTNAME}" \
   --accept-dns=false \
-  --ephemeral
 
 echo "[start] starting ollama"
 export OLLAMA_CONTEXT_LENGTH=262144
