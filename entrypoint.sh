@@ -37,6 +37,8 @@ tailscale --socket=/tmp/tailscaled.sock up \
   --ephemeral
 
 echo "[start] starting ollama"
+export OLLAMA_CONTEXT_LENGTH=262144
+
 ollama serve &
 OLLAMA_PID=$!
 
